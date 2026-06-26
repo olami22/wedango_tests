@@ -44,7 +44,7 @@ A system-level user who can:
 
 Epics and User Stories
 EPIC 1: User Authentication
-3.1 User Login
+1.1 User Login
 User Story:
 As a user
 I want to log in to my account
@@ -59,7 +59,7 @@ Acceptance Criteria:
 User session is maintained
 
 EPIC 2: Create Dango Game
-3.2 Create Dango
+2.1 Create Dango
 User Story:
 As a logged-in user
 I want to create a dango game
@@ -73,7 +73,7 @@ Acceptance Criteria:
 
 Creator is assigned as host
 
-3.3 Set Dango Visibility
+2.2 Set Dango Visibility
 User Story:
 As a user
 I want to set my dango as public or private
@@ -87,7 +87,7 @@ Acceptance Criteria:
 
 Private dango generates a unique join code and/or link
 
-3.4 Configure Draw Trigger
+2.3 Configure Draw Trigger
 User Story:
 As a user
 I want to define how the draw is triggered
@@ -102,8 +102,24 @@ oSlot-filled trigger
 
 Slot-filled trigger activates when all slots are occupied
 
+2.4 In-Game Chat 
+
+User Story:
+As a participant in a dango
+I want to chat with other participants
+So that I can communicate during the game
+
+Acceptance Criteria:
+- Each dango has a dedicated chat page
+- Only users who joined the dango can access the chat
+- Messages are displayed in chronological order
+- User can send messages
+- User can receive messages
+- Empty messages are not allowed
+- Messages should appear in near real-time
+
 EPIC 3: Join Dango
-3.5 Join Public Dango
+3.1 Join Public Dango
 User Story:
 As a user
 I want to browse and join public dangos
@@ -117,7 +133,7 @@ Acceptance Criteria:
 
 Confirmation is shown after joining
 
-3.6 Join Private Dango
+3.2 Join Private Dango
 User Story:
 As a user
 I want to join a private dango using a code or link
@@ -132,7 +148,7 @@ Acceptance Criteria:
 Private dangos are not publicly listed
 
 EPIC 4: Admin Capabilities
-3.7 Admin Create Public Dango
+4.1 Admin Create Public Dango
 User Story:
 As an admin
 I want to create a public dango without participating
@@ -145,3 +161,33 @@ Acceptance Criteria:
 Dango is visible in public listings
 
 Admin can monitor the game
+
+
+EPIC 5: Wallet & Transactions
+
+5.1 Fund Wallet
+
+User Story:
+As a user
+I want to add money to my wallet
+So that I can use it to join dango games
+
+Acceptance Criteria:
+- User can initiate a deposit
+- Payment must be successful before wallet is credited
+- Wallet balance updates correctly after payment
+- Failed transactions do not affect wallet balance
+
+
+5.2 Withdraw Winnings
+
+User Story:
+As a user
+I want to withdraw my winnings
+So that I can access my funds
+
+Acceptance Criteria:
+- User can request withdrawal
+- Withdrawal amount must not exceed wallet balance
+- User receives confirmation after request
+- Wallet balance updates after successful withdrawal

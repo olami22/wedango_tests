@@ -14,16 +14,20 @@ export default class AuthPage{
         this.createPassword = page.getByRole('textbox', { name: 'Create a password' })
         this.confirmPassword = page.getByRole('textbox', { name: 'Repeat your password' })
 
-        this.submitButton = page.getByRole('button', { name: 'Login' })
+        this.submitButton = page.locator('form').getByRole('button', { name: 'Login' })
         this.createButton = page.getByRole('button', { name: 'Create Account' })
 
-        this.errorMessage = page.getByText('text=Invalid email or password')
+        this.invalidCredentialMessage = page.getByText('Invalid email or password')  
+        this.passwordChar = page.getByText('Password must be at least 8 characters')
+        this.passwordSpecialChar = page.getByText('Password must contain at least one special character (!@#$%^&*')
+        this.assertUser = page.getByText('TTest')
         
 
     }
 
 
     async navigate(){
+        //await this.page.pause()
         await this.page.goto('https://wedango.com')
     }
 
@@ -48,7 +52,7 @@ export default class AuthPage{
     }
   
     
-    async signup(fullname,email, password){
+    async signup(fullname, email, password){
         await this.fullnameInput.fill(fullname)
         await this.emailInput.fill(email)
         await this.createPassword.fill(password)
@@ -58,9 +62,23 @@ export default class AuthPage{
     }
 
 
-    async assertErrorMessage(expectedMessage){
-       await expect(this.errorMessage).toContainText(expectedMessage)
+    async assertInvalidMessage(expectedMessage){
+       await expect(this.invalidCredentialMessage).toContainText(expectedMessage)
 
     }
+
+    async assertUserMessage(expectedUser){
+       await expect(this.assertUser).toContainText(expectedUser)
+
+    }
+
+    async assertPasswordChar(expectedError){
+        await expect(this.passwordChar).toContainText(expectedError)
+    }
+
+    async assertPasswordSpecialChar(expectedCharError){
+        await expect(this.passwordSpecialChar).toContainText(expectedCharError)
+    }
+
 
 }
