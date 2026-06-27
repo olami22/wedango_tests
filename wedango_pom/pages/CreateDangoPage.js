@@ -5,29 +5,43 @@ export default class CreateDangoPage{
         this.page = page
 
         this.closePopup = page.getByRole('button', { name: 'Close winner popup' })
-        this.createButton = page.getByRole('button', { name: 'CREATE' })
+        this.createButton = page.getByRole('link', { name: 'CREATE' })
+
         this.clickPublic = page.getByRole('button', { name: 'Public' })
-        this.clickPrivate = page.getByRole('button', { name: 'Private' })
+        this.clickPrivate = page.getByRole('button', { name: 'Private', exact: true  })
+
         this.enterAmount = page.getByPlaceholder('Enter amount')
-        this.noOfSlot = page.getByLabel('Number of Slots')
+        this.noOfSlot = page.getByPlaceholder('Enter', { exact: true })
+
         this.slotType = page.getByRole('radio', { name: 'Once slots are filled' })
         this.timeType = page.getByRole('radio', { name: 'Specific Date & Time' })
+
         this.date = page.locator('input[type="date"]')
         this.time = page.locator('input[type="time"]')
+
         this.createPublicDango = page.getByRole('button', { name: 'Create Public Dango' })
         this.createPrivateDango = page.getByRole('button', { name: 'Create Private Dango' })
-        this.viewDango = page.getByRole('button', { name: 'View Dango' })
+
+        this.viewPublicDango = page.getByRole('button', { name: 'View Dango' })
+        this.viewPrivateDango = page.getByRole('button', { name: 'View My Dangos' })
+
+        this.copyCode = page.getByRole('button', { name: 'Copy Code' })
+
         this.mnpp = page.getByRole('button', { name: '4' }).first() //maximum number of slot per player
-        this.pick1 = page.locator('div').filter({ hasText: 'Your Picks' }).getByRole('button', { name: '1' })
-        this.pick2 = page.locator('div').filter({ hasText: 'Your Picks' }).getByRole('button', { name: '2' })
-        this.pick3 = page.locator('div').filter({ hasText: 'Your Picks' }).getByRole('button', { name: '3' })
-        this.pick4 = page.locator('div').filter({ hasText: 'Your Picks' }).getByRole('button', { name: '4' })
+
+        this.pick1 = page.getByRole('button', { name: '1' }).nth(1)
+        this.pick2 = page.getByRole('button', { name: '2' }).nth(1)
+        this.pick3 = page.getByRole('button', { name: '3' }).nth(1)
+        this.pick4 = page.getByRole('button', { name: '4' }).nth(1)
+
         this.getMessage = page.getByText('Max Prize (NGN)')
+        this.getPrivateMessage = page.getByText('Winnings (NGN)')
 
     }
 
 
     async openCreatePage(){
+        await this.closePopup.click()
         await this.createButton.click()
     }
 
@@ -65,7 +79,7 @@ export default class CreateDangoPage{
         await this.timeType.check()
         await this.date.fill(drawDate) //date should be in this format"yy-mm-dd" i.e "2026-06-25"
         await this.time.click()
-        await this.time.fill(drawTime) //time should be in this format "hh:mm" i.e "13:30" 
+        await this.time.fill(drawTime) //time should be in this format "hh:mm" i.e "13:30" 24hr clock
 
     }
 
@@ -79,9 +93,16 @@ export default class CreateDangoPage{
     }
 
 
-    async viewPublicDango(){
+    async viewPublicDangoGame(){
         await this.createPublicDango.click()
-        await this.viewDango.click() 
+        await this.viewPublicDango.click() 
+    }
+
+
+    async viewPrivateDangoGame(){
+        await this.createPrivateDango.click()
+        await this.copyCode.click()
+        await this.viewPrivateDango.click() 
     }
 
 
@@ -90,6 +111,13 @@ export default class CreateDangoPage{
         await expect(this.getMessage).toContainText(expectedMessage)
 
     }
+
+    async assertPrivateGame(expectedPrivateMessage){
+
+        await expect(this.getPrivateMessage).toContainText(expectedPrivateMessage)
+
+    }
+
 
 }
 
