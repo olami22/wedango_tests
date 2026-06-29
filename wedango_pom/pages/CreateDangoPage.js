@@ -29,19 +29,20 @@ export default class CreateDangoPage{
 
         this.mnpp = page.getByRole('button', { name: '4' }).first() //maximum number of slot per player
 
-        this.pick1 = page.getByRole('button', { name: '1' }).nth(1)
-        this.pick2 = page.getByRole('button', { name: '2' }).nth(1)
-        this.pick3 = page.getByRole('button', { name: '3' }).nth(1)
-        this.pick4 = page.getByRole('button', { name: '4' }).nth(1)
-
         this.getMessage = page.getByText('Max Prize (NGN)')
         this.getPrivateMessage = page.getByText('Winnings (NGN)')
+
+        
 
     }
 
 
-    async openCreatePage(){
+    async clickClosePopup(){
         await this.closePopup.click()
+    }
+
+
+    async openCreatePage(){
         await this.createButton.click()
     }
 
@@ -83,13 +84,16 @@ export default class CreateDangoPage{
 
     }
 
+    
+    numberButton(number){
+        return this.page.getByRole('button', { name: String(number) }).nth(1)
+    }
+    
 
-    async pickslot(){
-        await this.pick1.click();
-        await this.pick2.click();
-        await this.pick3.click();
-        await this.pick4.click();
-       
+    async pickSlots(numbers){
+        for (const number of numbers){
+            await this.numberButton(number).click();
+        }
     }
 
 
