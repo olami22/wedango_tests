@@ -20,14 +20,14 @@ export default class AuthPage{
         this.invalidCredentialMessage = page.getByText('Invalid email or password')  
         this.passwordChar = page.getByText('Password must be at least 8 characters')
         this.passwordSpecialChar = page.getByText('Password must contain at least one special character (!@#$%^&*')
-        this.assertUser = page.getByText('TTest')
+        //this.assertUser = page.getByText('TTest')
         
 
     }
 
 
     async navigate(){
-        //await this.page.pause()
+        await this.page.pause()
         await this.page.goto('https://wedango.com')
     }
 

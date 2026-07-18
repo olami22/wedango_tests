@@ -20,7 +20,7 @@ test.describe('Create Dango Game', () => {
         await pm.createDangoPage.clickClosePopup();
         await pm.createDangoPage.openCreatePage();
         await pm.createDangoPage.selectPublicgame();
-        await pm.createDangoPage.gamePrize('1500', '12');
+        await pm.createDangoPage.gamePrize('15000', '12');
         await pm.createDangoPage.triggerSlot();
         await pm.createDangoPage.pickSlots([1, 2, 3, 4]);
         await pm.createDangoPage.viewPublicDangoGame();
@@ -78,4 +78,4 @@ test.describe('Create Dango Game', () => {
     })
 })
 
-//private games code = C958BE8D79, 6F34DD6D48, 187A366B06,1452B2A2A6
+//private games code = C958BE8D79, 187A366B06,1452B2A2A6
