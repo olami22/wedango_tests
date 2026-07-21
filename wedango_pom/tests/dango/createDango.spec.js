@@ -16,7 +16,7 @@ test.describe('Create Dango Game', () => {
     test.only('Slot filled Trigger: create a Public Dango game.', async () =>{
         await pm.authPage.navigate();
         await pm.authPage.openLoginModal();
-        await pm.authPage.login('test@wedango.com', 'password123');
+        await pm.authPage.login('xxx', 'xxx');
         await pm.createDangoPage.clickClosePopup();
         await pm.createDangoPage.openCreatePage();
         await pm.createDangoPage.selectPublicgame();
@@ -32,7 +32,7 @@ test.describe('Create Dango Game', () => {
     test('Slot filled: create a Private Dango game.', async() => {
         await pm.authPage.navigate();
         await pm.authPage.openLoginModal();
-        await pm.authPage.login('test@wedango.com', 'password123');
+        await pm.authPage.login('xxx', 'xxx');
         await pm.authPage.assertUserMessage('TTest');
         await pm.createDangoPage.clickClosePopup();
         await pm.createDangoPage.openCreatePage();
@@ -48,7 +48,7 @@ test.describe('Create Dango Game', () => {
     test('Date and Time Trigger: create a Public Dango game.', async() =>{
         await pm.authPage.navigate();
         await pm.authPage.openLoginModal();
-        await pm.authPage.login('test@wedango.com', 'password123');
+        await pm.authPage.login('xxx', 'xxx');
         await pm.authPage.assertUserMessage('TTest');
         await pm.createDangoPage.clickClosePopup();
         await pm.createDangoPage.openCreatePage();
@@ -64,7 +64,7 @@ test.describe('Create Dango Game', () => {
     test('Date and Time Trigger: create a Private Dango game.', async() =>{
         await pm.authPage.navigate();
         await pm.authPage.openLoginModal();
-        await pm.authPage.login('test@wedango.com', 'password123');
+        await pm.authPage.login('xxx', 'xxx');
         await pm.authPage.assertUserMessage('TTest');
         await pm.createDangoPage.clickClosePopup();
         await pm.createDangoPage.openCreatePage();

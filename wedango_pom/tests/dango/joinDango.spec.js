@@ -17,11 +17,10 @@ test.describe('Join Dango Test', () => {
 
         await pm.authPage.navigate();
         await pm.authPage.openLoginModal();
-        await pm.authPage.login('favouradeooa@gmail.com', '@Test1234');
+        await pm.authPage.login('xxx', 'xxx');
         await pm.createDangoPage.clickClosePopup();
-        await pm.joinDangoPage.joinAvailalbeDangos([6,7,8]);
+        await pm.joinDangoPage.joinAvailalbeDangos();
       
-
         
     })
 

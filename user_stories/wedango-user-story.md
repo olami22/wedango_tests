@@ -21,7 +21,7 @@ Admin
 - Password: password123
 User 1
  - Email: favouradeooa@gmail.com
- - Password: @Asdf1234
+ - Password: @Test1234
 
 User 2
  - Email: faakinola@student.oauife.edu.ng
@@ -44,7 +44,24 @@ A system-level user who can:
 
 Epics and User Stories
 EPIC 1: User Authentication
-1.1 User Login
+
+1.1 User Sign Up
+User Story:
+As a user
+I want to sign up for an account
+So that I can access the platform and interact with dango games
+Acceptance Criteria:
+User can sign up with valid information like email, password, and full name
+
+User get a confirmation email after successful sign up
+
+Invalid information return an error message
+
+Successful sign up creates a new user account
+
+User can log in with their new credentials
+
+1.2 User Login
 User Story:
 As a user
 I want to log in to my account
